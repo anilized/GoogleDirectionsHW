@@ -70,6 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
          htmlVal[j] = htmlVal[j].replaceAll('</div>', "");
          htmlVal[j] = htmlVal[j].replaceAll("  ", " ");
        }
+      
       setState(() {
         isLoading = false;
       });
@@ -118,6 +119,26 @@ class _MyHomePageState extends State<MyHomePage> {
               controller: destController,
             ),
             Padding(padding: EdgeInsets.symmetric(vertical: 10)),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                FlatButton(
+                color: Colors.grey,
+                shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0),
+                side: BorderSide(color: Colors.grey)
+              ),
+              textColor: Colors.white,
+              disabledColor: Colors.grey,
+              disabledTextColor: Colors.black,
+              padding: EdgeInsets.symmetric(horizontal: 20.0),
+              splashColor: Colors.grey,
+              onPressed: () => _fetchData(),
+              child: Text(
+                "GET DIRECTIONS",
+                style: TextStyle(fontSize: 12.0),
+              ),
+            ),
             FlatButton(
               color: Colors.grey,
               shape: RoundedRectangleBorder(
@@ -127,13 +148,15 @@ class _MyHomePageState extends State<MyHomePage> {
               textColor: Colors.white,
               disabledColor: Colors.grey,
               disabledTextColor: Colors.black,
-              padding: EdgeInsets.symmetric(horizontal: 100.0),
+              padding: EdgeInsets.symmetric(horizontal: 20.0),
               splashColor: Colors.grey,
               onPressed: () => _fetchData(),
               child: Text(
-                "GET DIRECTIONS",
-                style: TextStyle(fontSize: 20.0),
-              ),
+                "SHOW ON MAP",
+                style: TextStyle(fontSize: 12.0),
+                  ),
+                ),
+              ],
             ),
             Padding(padding: EdgeInsets.symmetric(vertical: 10)),
             Row(
@@ -147,7 +170,14 @@ class _MyHomePageState extends State<MyHomePage> {
                       return ListTile(
                       contentPadding: EdgeInsets.all(10.0),
                       title: Text(list[index]['distance']['text'] + " / " + list[index]['duration']['text']),
-                      subtitle: Text(htmlVal[index] , style: TextStyle(fontSize: 14,),),
+                      subtitle: Text(list[index]['html_instructions'].toString()
+                      .replaceAll('<b>','')
+                      .replaceAll('</b>', '')
+                      .replaceAll('/<wbr/>', '')
+                      .replaceAll('<div style="font-size:0.9em">', '')
+                      .replaceAll('</div>', '')
+                      .replaceAll('  ', ' ')
+                       , style: TextStyle(fontSize: 14,),),
                       );
                     }),
                   ),
