@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.red,
       ),
       home: MyHomePage(title: 'Google Directions View'),
     );
@@ -105,7 +105,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   FlatButton(
-                    color: Colors.grey,
+                    color: Colors.black,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10.0),
                         side: BorderSide(color: Colors.grey)),
@@ -117,22 +117,6 @@ class _MyHomePageState extends State<MyHomePage> {
                     onPressed: () => _fetchData(),
                     child: Text(
                       "GET DIRECTIONS",
-                      style: TextStyle(fontSize: 12.0),
-                    ),
-                  ),
-                  FlatButton(
-                    color: Colors.grey,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                        side: BorderSide(color: Colors.grey)),
-                    textColor: Colors.white,
-                    disabledColor: Colors.grey,
-                    disabledTextColor: Colors.black,
-                    padding: EdgeInsets.symmetric(horizontal: 20.0),
-                    splashColor: Colors.grey,
-                    onPressed: () => _fetchData(),
-                    child: Text(
-                      "SHOW ON MAP",
                       style: TextStyle(fontSize: 12.0),
                     ),
                   ),
